@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <title>FAMICOM DETECTIVE</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extra-base.css">
+  <link rel="stylesheet" href="extra-ui.css">
+
+</head>
+<body>
+  <!-- タイトル画面 -->
+  <div class="title-screen" id="titleScreen">
+    <img class="title-logo" src="ui_title_logo.png" alt="FAMICOM DETECTIVE">
+    <div class="title-prompt" id="titlePrompt">CLICK TO START</div>
+  </div>
+
+  <div class="container">
+    <!-- 画面ヘッダー -->
+    <div class="header">
+      <div class="header-left">
+        <span class="header-status">Investigation Status: Active</span>
+        <h1 class="header-title">FAMICOM DETECTIVE</h1>
+      </div>
+      <div class="header-scene" id="sceneTitle">和室 (現場)</div>
+    </div>
+
+    <!-- メインゲームウィンドウ -->
+    <div class="game-window">
+      <!-- 背景画像 -->
+      <div class="bg-layer">
+        <img id="bgImage" class="bg-image" src="bg_crime_scene_washitsu.png" alt="背景">
+      </div>
+
+      <!-- キャラクター表示レイヤー -->
+      <div class="character-layer" id="characterLayer"></div>
+
+      <!-- 調査ターゲットレイヤー -->
+      <div class="investigation-layer" id="investigationLayer"></div>
+
+      <!-- ブラウン管エフェクト -->
+      <div class="crt-effects">
+        <div class="scanline"></div>
+        <div class="noise"></div>
+        <div class="vignette"></div>
+      </div>
+    </div>
+
+    <!-- テキスト & コマンド UI -->
+    <div class="ui-panel">
+      <!-- メッセージウィンドウ -->
+      <div class="message-window" id="messageWindow">
+        <div class="message-label">System Message</div>
+        <div class="message-text" id="messageText"></div>
+      </div>
+
+      <!-- サイドコマンドパネル -->
+      <div class="command-panel" id="commandPanel"></div>
+    </div>
+
+    <!-- フッター -->
+    <div class="footer">
+      <span>SELECT COMMAND</span>
+      <span>A: INTERACT</span>
+      <span>B: MENU</span>
+    </div>
+
+    <!-- アイテムポップアップ -->
+    <div class="item-popup" id="itemPopup" onclick="event.stopPropagation()">
+      <img class="item-popup-image" id="itemPopupImage" alt="">
+      <div class="item-popup-name" id="itemPopupName"></div>
+      <div class="item-popup-description" id="itemPopupDescription"></div>
+      <button class="item-popup-close" onclick="closeItemPopup()">CLOSE</button>
+    </div>
+
+    <!-- エフェクトレイヤー -->
+    <div class="effect-layer" id="effectLayer"></div>
+  </div>
+
+  <!-- エンディング画面 -->
+  <div class="ending-screen" id="endingScreen">
+    <div class="ending-content">
+      <div class="ending-title" id="endingTitle"></div>
+      <div class="ending-divider"></div>
+      <div class="ending-story" id="endingStory"></div>
+      <div class="ending-stats" id="endingStats"></div>
+      <button class="ending-restart" id="endingRestart" onclick="location.reload()">▶ PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <!-- JavaScriptファイル -->
+  <script src="data.js"></script>
+  <script src="game-state.js"></script>
+  <script src="audio.js"></script>
+  <script src="utils.js"></script>
+  <script src="ui.js"></script>
+  <script src="events.js"></script>
+  <script src="effects.js"></script>
+  <script src="save-load.js"></script>
+  <script src="ending.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
